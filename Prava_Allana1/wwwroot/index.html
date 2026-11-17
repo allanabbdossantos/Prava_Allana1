@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cadastro e catálogo de livros">
+    <title>Biblioteca | Cadastro de livros</title>
+    <link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+    <header class="topbar">
+        <div class="container topbar-content">
+            <a class="brand" href="/" aria-label="Biblioteca - início">
+                <span class="brand-mark" aria-hidden="true">▰</span>
+                <span>Biblioteca</span>
+            </a>
+            <span class="status-pill"><span class="status-dot"></span> Sistema online</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <div>
+                <p class="eyebrow">CATÁLOGO PESSOAL</p>
+                <h1>Seus livros,<br><em>organizados.</em></h1>
+                <p class="hero-text">Cadastre suas obras favoritas e mantenha sua coleção sempre acessível.</p>
+            </div>
+            <div class="hero-decoration" aria-hidden="true">
+                <span class="book book-back"></span>
+                <span class="book book-middle"></span>
+                <span class="book book-front"></span>
+            </div>
+        </section>
+
+        <section class="dashboard-grid">
+            <div class="card form-card">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">NOVA ENTRADA</p>
+                        <h2>Cadastrar livro</h2>
+                    </div>
+                    <span class="number-badge">01</span>
+                </div>
+
+                <form id="livro-form" novalidate>
+                    <div class="field-group">
+                        <label for="titulo">Título <span>*</span></label>
+                        <input id="titulo" name="titulo" type="text" placeholder="Ex.: O Senhor dos Anéis" maxlength="200" required>
+                    </div>
+
+                    <div class="field-group">
+                        <label for="autor">Autor <span>*</span></label>
+                        <input id="autor" name="autor" type="text" placeholder="Ex.: J. R. R. Tolkien" maxlength="150" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="field-group">
+                            <label for="anoPublicacao">Ano de publicação <span>*</span></label>
+                            <input id="anoPublicacao" name="anoPublicacao" type="number" min="1" max="2100" placeholder="1954" required>
+                        </div>
+                        <div class="field-group">
+                            <label for="isbn">ISBN <span>*</span></label>
+                            <input id="isbn" name="isbn" type="text" placeholder="978-..." maxlength="20" required>
+                        </div>
+                    </div>
+
+                    <button class="primary-button" type="submit" id="submit-button">
+                        <span>Adicionar ao catálogo</span>
+                        <span class="button-arrow" aria-hidden="true">→</span>
+                    </button>
+                    <p class="form-note">Campos marcados com * são obrigatórios. Aceitamos ISBN-10 e ISBN-13.</p>
+                </form>
+                <div id="form-message" class="message" role="alert" aria-live="polite"></div>
+            </div>
+
+            <div class="card catalog-card">
+                <div class="section-heading catalog-heading">
+                    <div>
+                        <p class="eyebrow">SUA COLEÇÃO</p>
+                        <h2>Livros cadastrados <span id="book-count" class="count-badge">0</span></h2>
+                    </div>
+                    <button class="refresh-button" id="refresh-button" type="button" title="Atualizar lista" aria-label="Atualizar lista">↻</button>
+                </div>
+
+                <div id="loading" class="empty-state" hidden>
+                    <span class="loader" aria-hidden="true"></span>
+                    <p>Carregando catálogo...</p>
+                </div>
+                <div id="empty-state" class="empty-state">
+                    <span class="empty-icon" aria-hidden="true">▱</span>
+                    <h3>Sua estante está vazia</h3>
+                    <p>Cadastre o primeiro livro usando o formulário ao lado.</p>
+                </div>
+                <div id="book-list" class="book-list" aria-live="polite"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="container footer">
+        <span>Biblioteca pessoal</span>
+        <span>Cadastro em memória · .NET 10</span>
+    </footer>
+
+    <script src="/js/site.js"></script>
+</body>
+</html>
